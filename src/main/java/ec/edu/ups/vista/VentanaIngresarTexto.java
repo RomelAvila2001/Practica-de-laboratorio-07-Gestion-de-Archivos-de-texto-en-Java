@@ -108,9 +108,10 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
 
     private void btnJFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJFileChooserActionPerformed
         JFileChooser fc= new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int seleccion= fc.showOpenDialog(this);
         
-        if(seleccion==JFileChooser.APPROVE_OPTION){
+        if(seleccion==JFileChooser.APPROVE_OPTION ){
             File archivo= fc.getSelectedFile();
             txtRuta.setText(archivo.getAbsolutePath());
         }
