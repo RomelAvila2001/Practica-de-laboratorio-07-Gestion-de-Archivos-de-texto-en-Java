@@ -5,8 +5,10 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorArchivos;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +16,14 @@ import javax.swing.JFileChooser;
  */
 public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
 
+    private ControladorArchivos controladorArchivos;
     /**
      * Creates new form VentanaIngresarTexto
      */
-    public VentanaIngresarTexto() {
+    public VentanaIngresarTexto(ControladorArchivos controladorArchivos) {
         initComponents();
+        
+        this.controladorArchivos= controladorArchivos;
     }
 
     /**
@@ -33,11 +38,11 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         txtRuta = new javax.swing.JTextField();
         btnJFileChooser = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAreaDeTexto = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtNombreArchivo = new javax.swing.JTextField();
+        btnGuardarArchivo = new javax.swing.JButton();
 
         txtRuta.setEditable(false);
         txtRuta.setBackground(new java.awt.Color(255, 255, 204));
@@ -49,15 +54,20 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAreaDeTexto.setColumns(20);
+        txtAreaDeTexto.setRows(5);
+        jScrollPane1.setViewportView(txtAreaDeTexto);
 
         jLabel1.setText("Ruta:");
 
         jLabel2.setText("Nombre del archivo:");
 
-        jButton1.setText("Guardar Archivo ");
+        btnGuardarArchivo.setText("Guardar Archivo ");
+        btnGuardarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarArchivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,10 +88,10 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(btnGuardarArchivo)
                             .addComponent(btnJFileChooser))))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
@@ -96,8 +106,8 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarArchivo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -117,15 +127,22 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnJFileChooserActionPerformed
 
+    private void btnGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarArchivoActionPerformed
+        String ruta=txtRuta.getText()+"/"+txtNombreArchivo.getText();
+        String texto=txtAreaDeTexto.getText();
+        controladorArchivos.crearArchivoDeTexto(ruta, texto);
+        JOptionPane.showMessageDialog(this, "Texto guardado exitosamente");
+    }//GEN-LAST:event_btnGuardarArchivoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardarArchivo;
     private javax.swing.JButton btnJFileChooser;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea txtAreaDeTexto;
+    private javax.swing.JTextField txtNombreArchivo;
     private javax.swing.JTextField txtRuta;
     // End of variables declaration//GEN-END:variables
 }

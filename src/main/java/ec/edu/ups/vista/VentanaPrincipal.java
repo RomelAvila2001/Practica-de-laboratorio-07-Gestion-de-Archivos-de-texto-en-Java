@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorArchivos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -17,12 +18,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private VentanaIngresarTexto ventanaIngresarTexto;
+    private ControladorArchivos controladorArchivos;
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
-        ventanaIngresarTexto= new VentanaIngresarTexto();
+        controladorArchivos= new ControladorArchivos();
+        ventanaIngresarTexto= new VentanaIngresarTexto(controladorArchivos);
     }
 
     /**

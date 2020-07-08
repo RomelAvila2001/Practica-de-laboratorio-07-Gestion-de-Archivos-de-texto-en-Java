@@ -1,5 +1,9 @@
 package ec.edu.ups.controlador;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -28,5 +32,22 @@ public class ControladorArchivos {
         String[] letras = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n",
         "o","p","q","r","s","t","u","v","w","x","y","z"};
         String[] encriptado = {"","8",};
+    }
+    
+    public void crearArchivoDeTexto(String rutas, String texto){
+        try{
+            String ruta="rutas";
+            FileWriter archivoEscritura= new FileWriter(ruta,true);
+            BufferedWriter escritura= new BufferedWriter(archivoEscritura);
+            escritura.append("texto"+"\n");
+            escritura.close();
+            archivoEscritura.close();
+        }catch(FileNotFoundException e1){
+            System.out.println("Ruta de archivo no encontrada");
+        }catch(IOException e2){
+            System.out.println("Error de escritura");
+        }catch(Exception e3){
+            System.out.println("Error General");
+        }
     }
 }
