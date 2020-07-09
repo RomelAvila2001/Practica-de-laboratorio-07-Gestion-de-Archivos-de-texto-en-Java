@@ -128,12 +128,21 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnJFileChooserActionPerformed
 
     private void btnGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarArchivoActionPerformed
-        String ruta=txtRuta.getText()+"/"+txtNombreArchivo.getText();
+        String ruta=txtRuta.getText();
+        String nombre= txtNombreArchivo.getText();
+        System.out.println(ruta);
         String texto=txtAreaDeTexto.getText();
-        controladorArchivos.crearArchivoDeTexto(ruta, texto);
+        System.out.println(texto);
+        controladorArchivos.crearArchivoDeTexto(ruta,nombre,texto);
         JOptionPane.showMessageDialog(this, "Texto guardado exitosamente");
+        limpiar();
     }//GEN-LAST:event_btnGuardarArchivoActionPerformed
 
+    public void limpiar(){
+        txtAreaDeTexto.setText("");
+        txtNombreArchivo.setText("");
+        txtRuta.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarArchivo;
