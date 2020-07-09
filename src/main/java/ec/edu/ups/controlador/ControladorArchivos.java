@@ -16,17 +16,33 @@ public class ControladorArchivos {
     private String ruta;
     private String archivos;
     
-    private Map<String, String> hola;
+    private Map<String, String> diccionarioEncriptado;
     
     public ControladorArchivos() {
-        
+        llenarDiccionario();
     }
     
     public String encriptarNombreArchivo(String nombre){
         
+        String textoEncriptado="";
         
+        for (int i = 0; i < nombre.length(); i++) {
+            String letra = nombre.charAt(i)+"";
+            if(!letra.equals(" ")){
+                for (Map.Entry<String, String> entry : diccionarioEncriptado.entrySet()) {
+                    String key = entry.getKey();
+                    String value = entry.getValue();
+                    if(letra.equals(key)){
+                        textoEncriptado+=value;
+                        }
+                    }     
+            }else{
+                textoEncriptado+="-";
+            } 
+        }
+
         
-        return null;
+        return textoEncriptado;
     }
     
     public void llenarDiccionario(){
