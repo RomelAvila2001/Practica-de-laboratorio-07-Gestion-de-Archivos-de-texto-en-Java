@@ -40,9 +40,8 @@ public class ControladorArchivos {
             File archivo = new File(rutas + File.separator + nombre);
             String rutaCompleta=archivo.getAbsolutePath();
             
-            String ruta=rutaCompleta;
-            System.out.println(ruta);
-            FileWriter archivoEscritura= new FileWriter(ruta,true);
+            System.out.println(rutaCompleta);
+            FileWriter archivoEscritura= new FileWriter(rutaCompleta,true);
             BufferedWriter escritura= new BufferedWriter(archivoEscritura);
             escritura.append(texto+"\n");
             escritura.close();
