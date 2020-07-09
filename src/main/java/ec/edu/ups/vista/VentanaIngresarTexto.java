@@ -130,12 +130,17 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
     private void btnGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarArchivoActionPerformed
         String ruta=txtRuta.getText();
         String nombre= txtNombreArchivo.getText();
-        System.out.println(ruta);
-        String texto=txtAreaDeTexto.getText();
-        System.out.println(texto);
-        controladorArchivos.crearArchivoDeTexto(ruta,nombre,texto);
-        JOptionPane.showMessageDialog(this, "Texto guardado exitosamente");
-        limpiar();
+        if(!ruta.isEmpty() && !nombre.isEmpty()){
+            String nombreEncriptado = controladorArchivos.encriptarNombreArchivo(nombre);
+            System.out.println(ruta);
+            String texto=txtAreaDeTexto.getText();
+            System.out.println(texto);
+            controladorArchivos.crearArchivoDeTexto(ruta,nombreEncriptado,texto);
+            JOptionPane.showMessageDialog(this, "Texto guardado exitosamente");
+            limpiar();
+        }else{
+            JOptionPane.showMessageDialog(this, "Llene todos los campos");
+        }
     }//GEN-LAST:event_btnGuardarArchivoActionPerformed
 
     public void limpiar(){
