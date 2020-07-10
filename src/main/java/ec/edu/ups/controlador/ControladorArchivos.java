@@ -24,12 +24,12 @@ public class ControladorArchivos {
         llenarDiccionario();
     }
     
-    public String encriptarNombreArchivo(String nombre){
+    public String encriptarMensajeArchivo(String mensaje){
       
         String textoEncriptado="";
         
-        for (int i = 0; i < nombre.length(); i++) {
-            String letra = nombre.charAt(i)+"";
+        for (int i = 0; i < mensaje.length(); i++) {
+            String letra = mensaje.charAt(i)+"";
             if(!letra.equals(" ")){
                 for (Map.Entry<String, String> entry : diccionarioEncriptado.entrySet()) {
                     String key = entry.getKey();

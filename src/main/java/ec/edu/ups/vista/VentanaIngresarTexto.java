@@ -134,7 +134,7 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         if(!ruta.isEmpty() && !nombre.isEmpty()){
             //String nombreEncriptado = controladorArchivos.encriptarNombreArchivo(nombre);
             System.out.println(ruta);
-            String textoEncriptado=controladorArchivos.encriptarNombreArchivo(texto);
+            String textoEncriptado=controladorArchivos.encriptarMensajeArchivo(texto);
             System.out.println(texto);
             controladorArchivos.crearArchivoDeTexto(ruta,nombre,textoEncriptado);
             JOptionPane.showMessageDialog(this, "Texto guardado exitosamente");
