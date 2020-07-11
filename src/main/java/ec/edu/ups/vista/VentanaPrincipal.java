@@ -12,15 +12,20 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- *
+ * Clase ventanaPrincipal.
+ * Esta clase permite interactuar mendiante la interfaz grafica con el usuario.
  * @author NANCY
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private VentanaIngresarTexto ventanaIngresarTexto;
     private ControladorArchivos controladorArchivos;
+    
     /**
-     * Creates new form VentanaPrincipal
+     * Metodo VentanaPrincipal (Constructor).
+     * El metodo constructor incializa los componentes de la interfaz, ademas 
+     * instancia el controladorArchivos y tambien la ventanaIngresoTexto en la
+     * cual se pasa el controlador como parametro.
      */
     public VentanaPrincipal() {
         initComponents();
@@ -41,7 +46,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,10 +62,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -90,16 +90,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo exitMenuItemActionPerformed.
+     * Metodo para salir al presionar el menuItenm.
+     * @param evt 
+     */
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    /**
+     * Metodo openMenuItemActionPerformed.
+     * Metodo para mostrar al pantalla de ingreso de texto cuando se presione el
+     * menuItem.
+     * @param evt 
+     */
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         desktopPane.add(ventanaIngresarTexto);
         ventanaIngresarTexto.setVisible(true);
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     /**
+     * Metodo Main.
+     * Metodo principal, ejecuta todo el programa.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -140,7 +153,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
