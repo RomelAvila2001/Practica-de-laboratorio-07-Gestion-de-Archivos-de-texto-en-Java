@@ -60,6 +60,7 @@ public class ControladorArchivos {
         return textoEncriptado;
     }
     
+    
     /**
      * Metodo llenarDiccionario.
      * Este metodo tiene la funcion de llenar el diccionario mediante dos vectores,
