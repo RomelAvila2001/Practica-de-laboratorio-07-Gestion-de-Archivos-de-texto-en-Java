@@ -14,7 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  * Clase ventanaPrincipal.
  * Esta clase permite interactuar mendiante la interfaz grafica con el usuario.
- * @author NANCY
+ * @author Romel Avila, Sebastian Uyaguari
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
