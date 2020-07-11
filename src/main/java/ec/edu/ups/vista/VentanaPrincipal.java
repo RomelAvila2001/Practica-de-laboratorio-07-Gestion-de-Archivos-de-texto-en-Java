@@ -110,9 +110,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaIngresarTexto.setVisible(true);
     }//GEN-LAST:event_openMenuItemActionPerformed
 
-    /**
-     * Metodo Main.
-     * Metodo principal, ejecuta todo el programa.
+   /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
