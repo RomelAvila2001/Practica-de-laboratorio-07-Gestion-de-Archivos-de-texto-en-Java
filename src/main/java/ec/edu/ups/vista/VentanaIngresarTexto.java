@@ -11,14 +11,18 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author NANCY
+ *  Clase VentanaIngresarTexto.
+ * Esta clase tiene la finalidad de ingresar los datos para crear el archivo y ser
+ * guardado en eso.
+ * @author Romel Avila, Sebastian Uyaguari
  */
 public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
 
     private ControladorArchivos controladorArchivos;
     /**
-     * Creates new form VentanaIngresarTexto
+     * Metodo VentanaIngresarTexto (Constructor).
+     * El metodo constructor incializa los componentes de la interfaz, ademas 
+     * instancia el controladorArchivos.
      */
     public VentanaIngresarTexto(ControladorArchivos controladorArchivos) {
         initComponents();
@@ -43,6 +47,7 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNombreArchivo = new javax.swing.JTextField();
         btnGuardarArchivo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         txtRuta.setEditable(false);
         txtRuta.setBackground(new java.awt.Color(255, 255, 204));
@@ -58,10 +63,13 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         txtAreaDeTexto.setRows(5);
         jScrollPane1.setViewportView(txtAreaDeTexto);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 16)); // NOI18N
         jLabel1.setText("Ruta:");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 16)); // NOI18N
         jLabel2.setText("Nombre del archivo:");
 
+        btnGuardarArchivo.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnGuardarArchivo.setText("Guardar Archivo ");
         btnGuardarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,15 +77,15 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Encriptar Archivos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -92,13 +100,21 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGuardarArchivo)
-                            .addComponent(btnJFileChooser))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                            .addComponent(btnJFileChooser)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(jLabel3)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnJFileChooser)
@@ -108,7 +124,7 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarArchivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -116,6 +132,12 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo btnJFileChooserActionPerformed.
+     * Este metodo realiza el evento al ser presionado, abre una pestaña para poder
+     * seleccionar una ruta de manera mas sencilla.
+     * @param evt 
+     */
     private void btnJFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJFileChooserActionPerformed
         JFileChooser fc= new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -127,6 +149,12 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnJFileChooserActionPerformed
 
+    /**
+     * Metodo btnGuardarArchivoActionPerformed.
+     * Este metodo realiza el evento al presionar el boton, obtiene todos los datos
+     * para enviar al controlador para encriptar y crear el archivo.
+     * @param evt 
+     */
     private void btnGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarArchivoActionPerformed
         String ruta=txtRuta.getText();
         String nombre= txtNombreArchivo.getText();
@@ -144,6 +172,10 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnGuardarArchivoActionPerformed
 
+    /**
+     * Metodo limpiar.
+     * Eliminar la informacion de todos los campos de texto de la interfaz.
+     */
     public void limpiar(){
         txtAreaDeTexto.setText("");
         txtNombreArchivo.setText("");
@@ -155,6 +187,7 @@ public class VentanaIngresarTexto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnJFileChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtAreaDeTexto;
     private javax.swing.JTextField txtNombreArchivo;
